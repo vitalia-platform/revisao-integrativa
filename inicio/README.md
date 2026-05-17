@@ -67,9 +67,9 @@ Execute os passos abaixo **em sequência** na sua máquina local.
 
 ```bash
 # Clone o repositório principal E os submodules em um único comando
-git clone --recurse-submodules git@github.com:vitalia-platform/revisao.git
+git clone --recurse-submodules git@github.com:vitalia-platform/revisao-integrativa.git
 
-cd revisao
+cd revisao-integrativa
 ```
 
 > [!NOTE]
