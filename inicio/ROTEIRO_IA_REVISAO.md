@@ -65,9 +65,14 @@ A IA atua como Assistente Científico e Revisor Acadêmico. É proibido citar pl
    - **Fonte 3:** Europe PMC (`europepmc.org/api`)
    - **Fonte 4:** Crossref (`api.crossref.org`)
 3. Salva PDFs recuperados em `paths.output_fichamentos` (lido do config).
-4. Gera relatório final: *"Recuperados N PDFs. DOIs não localizados: [lista] — intervenção humana necessária."*
+4. Gera relatório final: *"Recuperados N PDFs."*
+5. **Relatório Ativo de Falhas:** O Agente gera uma lista com links clicáveis diretos (ex: `https://doi.org/[DOI]`) para todos os DOIs não localizados, acelerando a verificação manual pelo pesquisador.
 
-**Ação do Humano:** Baixa manualmente via CAFe/RNP os PDFs não recuperados automaticamente.
+**Ação do Humano:** Baixa manualmente via CAFe/RNP os PDFs não recuperados automaticamente e avisa a IA.
+
+**Verificação Pós-Download (Ação da IA):** Assim que o humano anexar os PDFs manuais, a IA executará um script de verificação para:
+1. Confirmar se a nomenclatura dos arquivos segue o padrão definido no projeto.
+2. Ler a primeira página do PDF para confirmar que o Título do artigo bate com o esperado, atestando a validade do anexo.
 
 ---
 
@@ -84,5 +89,6 @@ Para cada PDF validado, cria um arquivo markdown individual em `paths.output_fic
 
 **Ação da IA:**
 Com todos os fichamentos prontos, cria a Matriz de Extração e identifica as categorias emergentes organicamente (análise indutiva). Gera o mapa de `TRENDING_TOPICS` para os domínios de alto valor configurados.
+**Dossiê de Reasoning:** A IA produzirá um documento contendo o racional explícito da construção dessas categorias (citando quais artigos embasam cada categoria e o nível de confiança). Esse dossiê subsidiará a discussão do conselho científico.
 
-**Ação do Humano:** Revisa as categorias propostas (consenso do conselho científico) e autoriza a redação do Draft Acadêmico Neutro do artigo final.
+**Ação do Humano:** Revisa o dossiê e as categorias propostas (consenso do conselho científico) e autoriza a redação do Draft Acadêmico Neutro do artigo final.

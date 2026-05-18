@@ -1,7 +1,7 @@
 # Roteiro de Busca Estruturada (Portal de Periódicos CAPES)
 **Acesso:** Institucional via Comunidade Acadêmica Federada (CAFe) - UFMT
 
-Este roteiro é projetado para extrair o máximo potencial do seu acesso institucional (via RNP/CAFe), obtendo dados massivos e confiáveis para alimentar o processo automatizado de triagem (PRISMA Log Total) da nossa Revisão Integrativa.
+Este roteiro é um **Template** projetado para extrair o máximo potencial do seu acesso institucional (via RNP/CAFe), obtendo dados massivos e confiáveis para alimentar o processo automatizado de triagem (PRISMA Log Total) da nossa Revisão Integrativa. Durante o processo de `/integrative-review`, as marcações abaixo serão preenchidas.
 
 ## Passo 1: Autenticação (Acesso CAFe)
 1. Acesse: [Portal de Periódicos da CAPES](https://www-periodicos-capes-gov-br.ezl.periodicos.capes.gov.br/) (ou vá na página inicial e clique em "Acesso CAFe").
@@ -18,15 +18,15 @@ Para abranger o nosso foco atualizado (Engajamento, Gamificação, Redes Sociais
 1. Selecione o campo como **"Topic"** (WoS) ou **"Article title, Abstract, Keywords"** (Scopus).
 2. Cole a seguinte string booleana:
    ```text
-   TS=(("physical activity" OR "exercise" OR "physical training" OR "rehabilitation") AND ("wearable*" OR "smartphone" OR "mobile app*" OR "mHealth" OR "artificial intelligence" OR "gamification" OR "serious game*" OR "engagement" OR "adherence" OR "social media" OR "social network*" OR "peer support"))
+   {{SEARCH_STRING}}
    ```
 3. Pressione **Search**.
 
 ## Passo 4: Filtros Padrão (PRISMA)
 No painel esquerdo, aplique os filtros:
-1. **Year (Ano de Publicação):** 2018 até 2026.
+1. **Year (Ano de Publicação):** {{START_YEAR}} até {{END_YEAR}}.
 2. **Document Type:** Article e Review Articles (rejeite capítulos de livros e resumos de conferências).
-3. **Language:** English, Portuguese (se disponível).
+3. **Language:** {{LANGUAGES}}.
 4. Clique em **Refine / Limit to**.
 
 ## Passo 5: Exportação Estruturada (O Essencial)

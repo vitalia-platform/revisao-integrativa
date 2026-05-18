@@ -48,7 +48,7 @@ Os nomes de todas as pastas são definidos durante o preenchimento do painel `/i
 
 ### Domínios de Alto Valor
 
-[A definir via `/integrative-review`]
+{{HIGH_VALUE_DOMAINS}}
 
 Artigos nos domínios de alto valor receberão classificação `TRENDING_TOPIC` no Log PRISMA, permitindo análise isolada de tendências emergentes.
 
@@ -61,11 +61,11 @@ Artigos nos domínios de alto valor receberão classificação `TRENDING_TOPIC` 
 
 ### Critérios de Inclusão
 
-[A definir via `/integrative-review`]
+{{INCLUSION_CRITERIA}}
 
 ### Critérios de Exclusão
 
-[A definir via `/integrative-review`]
+{{EXCLUSION_CRITERIA}}
 
 ---
 

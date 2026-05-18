@@ -34,9 +34,9 @@ paths:
 # CONFIGURAÇÃO DO SERVIDOR LOCAL DE IA
 # ──────────────────────────────────────────────
 ollama:
-  base_url: ""                       # Ex: "http://localhost:11434"
-  model: ""                          # Ex: "llama3.2:3b"
-  embedding_model: ""                # Ex: "nomic-embed-text"
+  base_url: "http://192.168.0.254:11434" # IP do servidor local
+  model: "llama3.2:3b"                   # Modelo otimizado localmente
+  embedding_model: "nomic-embed-text"    # Modelo de embeddings
 
 # ──────────────────────────────────────────────
 # CONFIGURAÇÃO DO PROCESSAMENTO EM LOTE
