@@ -1,4 +1,24 @@
-
-# Ignorar contexto de sessão da IA (repósitorio aninhado isolado)
+# Contexto de sessão da IA (repositório aninhado isolado — configurado via install.sh)
 .agent/session/
 .agent/session/*
+
+# criteria_config.yaml gerado pelo /integrative-review (específico de cada revisão)
+criteria_config.yaml
+
+# Dados de trabalho reais (pertencem ao repositório de cada revisão, não ao template)
+# Os nomes dessas pastas são definidos no painel /integrative-review,
+# mas os padrões mais comuns estão listados aqui como proteção.
+exportacao/
+amostra/
+lotes/
+saida/
+fichamentos/
+
+# Arquivos binários de pesquisa
+*.pdf
+*.PDF
+
+# Arquivos de sistema
+.DS_Store
+__pycache__/
+*.pyc
