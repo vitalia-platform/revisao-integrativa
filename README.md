@@ -76,6 +76,13 @@ cd revisao-integrativa
 bash kit/scripts/install.sh
 ```
 
+Durante a instalação você será perguntado se deseja conectar um repositório de contexto existente:
+- **Não** — cria um contexto local apenas (sem sincronização entre máquinas).
+- **Sim** — informa a URL SSH do seu repositório de contexto. **Pode ser um repositório vazio**, o script criará a estrutura inicial e fará o primeiro push automaticamente.
+
+> [!NOTE]
+> `install.sh` é idempotente: pode ser rodado múltiplas vezes com segurança. A cada execução ele garante que os symlinks do kit estejam íntegros.
+
 ---
 
 ## 3. Criando seu Repositório de Trabalho
@@ -220,7 +227,43 @@ git push origin main
 
 ---
 
-## 8. Troubleshooting
+## 8. Scripts do Kit — Referência
+
+Todos os scripts estão em `kit/scripts/` e acessíveis via `bash .agent/scripts/` (symlink).
+
+| Script | Execução | Finalidade |
+|---|---|---|
+| `install.sh` | `bash kit/scripts/install.sh` | **Instalação/Atualização.** Cria os symlinks do kit em `.agent/`, configura o repositório de sessão (clone ou local) e registra a máquina. Idempotente — seguro rodar múltiplas vezes. |
+| `validate-kit.py` | `python3 .agent/scripts/validate-kit.py --target .` | **Auditoria de saúde.** Verifica se todos os symlinks estão corretos e se o repositório de sessão está sincronizado. Rode se suspeitar de problemas. |
+| `lib_machine.py` | (interno) | **Identidade da Máquina.** Gera e persiste um ID único por máquina em `~/.vitalia/machine_id`. Registra a máquina no `machines.json` do contexto de sessão. |
+| `lib_sync_guard.py` | (interno) | **Guardião de Concorrência.** Compara ETags (timestamps de commit) entre o estado local e o remoto para detectar conflitos antes de sincronizar. Impede colisões entre máquinas. |
+| `session-sync.sh` | `bash .agent/scripts/session-sync.sh` | **Sincronização Completa.** Pull, consolidação de shards, commit e push do contexto de sessão. Use ao encerrar a sessão ou antes de trocar de máquina. |
+| `session-resolve.sh` | `bash .agent/scripts/session-resolve.sh` | **Resolução de Conflitos.** Interface interativa para resolver divergências entre o contexto local e o remoto. Oferece opções de Pull, Push forçado, Reparo do `.git` local e Restauração da Nuvem. |
+| `session-config.sh` | (interno) | **Configuração de Sessão.** Define variáveis de ambiente do agente (modelo, limites, etc.) lidas do `criteria_config.yaml`. |
+| `session-consolidate.py` | (interno, chamado por `session-sync.sh`) | **Consolidação.** Mescla os arquivos de shard individuais (uma máquina por arquivo) no `CONTEXT.md` principal. |
+
+### Fluxo do `install.sh` em detalhes
+
+```
+Clone do template
+    ↓
+bash kit/scripts/install.sh
+    ↓
+├─ Cria/atualiza symlinks: .agent/{agents,rules,skills,workflows,templates,scripts}
+├─ Se .agent/session/.git não existe:
+│   ├─ Sim: Clone do repo de contexto informado
+│   │   └─ Se repo vazio: cria CONTEXT.md + commit inicial + push
+│   └─ Não: git init local com estrutura mínima
+├─ Registra máquina em machines.json
+└─ Roda validate-kit.py (auditoria final)
+```
+
+> [!TIP]
+> Em caso de qualquer falha após o clone, o `install.sh` cria automaticamente um contexto local de fallback. Isso significa que você nunca fica bloqueado — pode trabalhar localmente e conectar ao remoto depois via `session-resolve.sh` (opção 2 ou 4).
+
+---
+
+## 9. Troubleshooting
 
 ### Contexto não sincroniza
 
