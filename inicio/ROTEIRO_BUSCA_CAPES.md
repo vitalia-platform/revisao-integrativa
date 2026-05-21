@@ -18,15 +18,15 @@ Para abranger o nosso foco atualizado (Engajamento, Gamificação, Redes Sociais
 1. Selecione o campo como **"Topic"** (WoS) ou **"Article title, Abstract, Keywords"** (Scopus).
 2. Cole a seguinte string booleana:
    ```text
-   {{SEARCH_STRING}}
+   ("physical activity" OR "exercise" OR "physical training" OR "rehabilitation" OR "physical exercise" OR "physical education" OR "sports") AND ("wearable*" OR "smartphone" OR "mobile app*" OR "mHealth" OR "artificial intelligence" OR "gamification" OR "serious game*" OR "engagement" OR "adherence" OR "social media" OR "social network*" OR "peer support" OR "digital technology" OR "telemetry" OR "wearables")
    ```
 3. Pressione **Search**.
 
 ## Passo 4: Filtros Padrão (PRISMA)
 No painel esquerdo, aplique os filtros:
-1. **Year (Ano de Publicação):** {{START_YEAR}} até {{END_YEAR}}.
+1. **Year (Ano de Publicação):** 2018 até 2026.
 2. **Document Type:** Article e Review Articles (rejeite capítulos de livros e resumos de conferências).
-3. **Language:** {{LANGUAGES}}.
+3. **Language:** English, Portuguese, Spanish.
 4. Clique em **Refine / Limit to**.
 
 ## Passo 5: Exportação Estruturada (O Essencial)
